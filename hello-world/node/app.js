@@ -5,7 +5,6 @@
 
 const express = require('express');
 require('isomorphic-fetch');
-
 const app = express();
 app.use(express.json());
 
@@ -13,6 +12,10 @@ const daprPort = process.env.DAPR_HTTP_PORT || 3500;
 const stateStoreName = `statestore`;
 const stateUrl = `http://localhost:${daprPort}/v1.0/state/${stateStoreName}`;
 const port = 3000;
+
+function prettyJSON(obj) {
+    console.log(JSON.stringify(obj, null, 2));
+}
 
 app.get('/order', (_req, res) => {
     fetch(`${stateUrl}/order`)
@@ -31,6 +34,7 @@ app.get('/order', (_req, res) => {
 });
 
 app.post('/neworder', (req, res) => {
+    console.log("Received " +  prettyJSON(req.body));
     const data = req.body.data;
     const orderId = data.orderId;
     console.log("Got a new order! Order ID: " + orderId);
