@@ -1,0 +1,25 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+  namespace: default
+spec:
+  type: pubsub.snssqs
+  version: v1
+  metadata:
+#    - name: accessKey
+#      value: "AKIAIOSFODNN7EXAMPLE"
+#    - name: secretKey
+#      value: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+#    - name: region
+#      value: "us-east-1"
+#    - name: sessionToken
+#      value: "TOKEN"
+    - name: messageVisibilityTimeout
+      value: 10
+    - name: messageRetryLimit
+      value: 10
+    - name: messageWaitTimeSeconds
+      value: 1
+    - name: messageMaxNumber
+      value: 10

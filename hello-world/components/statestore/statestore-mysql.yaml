@@ -1,0 +1,18 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: statestore-mysql
+spec:
+  type: state.mysql
+  version: v1
+  metadata:
+    - name: connectionString
+      value: "root:root@tcp(localhost:3306)/?allowNativePasswords=true"
+    - name: schemaName
+      value: "test"
+#    - name: tableName
+#      value: "<TABLE NAME>"
+#    - name: pemPath # Required if pemContents not provided. Path to pem file.
+#      value: "<PEM PATH>"
+#    - name: pemContents # Required if pemPath not provided. Pem value.
+#      value: "<PEM CONTENTS>"

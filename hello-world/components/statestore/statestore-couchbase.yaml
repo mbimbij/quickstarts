@@ -1,0 +1,17 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: statestore-couchbase
+spec:
+  type: state.couchbase
+  version: v1
+  metadata:
+  - name: couchbaseURL
+    value: "http://localhost:8091"
+  - name: username
+    value: Administrator
+  - name: password
+    value: admin1
+  - name: bucketName
+    value: test
+
